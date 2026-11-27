@@ -53,7 +53,8 @@ window.PublicViews = (function () {
               <img src="assets/logo-hasan-dogan.png" alt="${esc(s.doctorName)}" />
             </div>
             <strong style="color:#fff; font-size:0.95rem;">${esc(s.doctorName)} — ${esc(s.doctorTitle)}</strong>
-            <span>Bilgi & Kayıt Hattı: ${esc(s.coordinatorName)} (${esc(s.coordinatorRole)}) · <a href="${esc(coordWa)}" target="_blank" rel="noopener">${esc(s.coordinatorPhone)}</a></span>
+            <span>Eğitim Bilgi &amp; Kayıt: ${esc(s.coordinatorName)} (${esc(s.coordinatorRole)}) · <a href="${esc(coordWa)}" target="_blank" rel="noopener">${esc(s.coordinatorPhone)}</a></span>
+            <span style="opacity:0.72;">Muayenehane: ${esc(s.clinicAddress || 'Sırakapılar Mah. Saltak Cad. No:44 Kat:4, Merkezefendi / DENİZLİ')} · Tel: ${esc(s.clinicPhone || '0 (258) 265 32 64')} · ${esc(s.clinicEmail || 'bilgi@drhasandogan.com')}</span>
           </div>
           <div class="row-gap">
             <a href="${esc(s.websitePrimary)}" target="_blank" rel="noopener">drhasandogan.com</a>
@@ -63,6 +64,8 @@ window.PublicViews = (function () {
             <a href="${esc(s.instagramUrl)}" target="_blank" rel="noopener">Instagram</a>
             <span>·</span>
             <a href="${esc(s.facebookUrl)}" target="_blank" rel="noopener">Facebook</a>
+            <span>·</span>
+            <a href="${esc(s.youtubeUrl || 'https://www.youtube.com/@doktorhasandogan')}" target="_blank" rel="noopener">YouTube</a>
           </div>
         </div>
       </footer>
@@ -106,8 +109,9 @@ window.PublicViews = (function () {
               <div class="external-links-bar">
                 <a class="ext-link-pill" href="${esc(s.websitePrimary)}" target="_blank" rel="noopener">${Icons.globe} www.drhasandogan.com</a>
                 <a class="ext-link-pill" href="${esc(s.websiteSecondary)}" target="_blank" rel="noopener">${Icons.globe} www.proloterapi.com.tr</a>
-                <a class="ext-link-pill" href="${esc(s.instagramUrl)}" target="_blank" rel="noopener">${Icons.instagram} Instagram Yayınları</a>
-                <a class="ext-link-pill" href="${esc(s.facebookUrl)}" target="_blank" rel="noopener">${Icons.facebook} Facebook Yayınları</a>
+                <a class="ext-link-pill" href="${esc(s.instagramUrl)}" target="_blank" rel="noopener">${Icons.instagram} Instagram</a>
+                <a class="ext-link-pill" href="${esc(s.facebookUrl)}" target="_blank" rel="noopener">${Icons.facebook} Facebook</a>
+                <a class="ext-link-pill" href="${esc(s.youtubeUrl || 'https://www.youtube.com/@doktorhasandogan')}" target="_blank" rel="noopener">${Icons.video} YouTube</a>
               </div>
             </div>
 
@@ -131,6 +135,32 @@ window.PublicViews = (function () {
                 </div>
               </div>
             ` : ''}
+          </div>
+        </section>
+
+        <section class="clinical-focus-strip">
+          <div class="public-container clinical-focus-grid">
+            <div class="clinical-focus-item">
+              <span class="clinical-focus-num">01</span>
+              <div>
+                <strong>Klasik Hackett Proloterapi</strong>
+                <span>Omuz, dirsek, el bileği, diz, ayak bileği ve omurga bağ dokusu rejenerasyonu</span>
+              </div>
+            </div>
+            <div class="clinical-focus-item">
+              <span class="clinical-focus-num">02</span>
+              <div>
+                <strong>Bütüncül Tıp &amp; Ağrı Yaklaşımı</strong>
+                <span>Proloterapi, Nöralterapi, Ozon Tedavisi ve kök neden odaklı klinik teşhis</span>
+              </div>
+            </div>
+            <div class="clinical-focus-item">
+              <span class="clinical-focus-num">03</span>
+              <div>
+                <strong>Uygulamalı &amp; Online Eğitim</strong>
+                <span>Denizli klinik vaka pratikleri ve Google Meet üzerinden 81 ile canlı yayın</span>
+              </div>
+            </div>
           </div>
         </section>
 
