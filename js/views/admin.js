@@ -24,12 +24,21 @@ window.AdminViews = (function () {
     leafletMap: null
   };
 
+  function getInitials(fullName) {
+    const cleaned = String(fullName || '')
+      .replace(/\b(Prof|Doç|Op|Uzm|Dr)\.\s*/gi, '')
+      .trim();
+    const parts = cleaned.split(/\s+/).filter(Boolean);
+    if (parts.length >= 2) return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    return (cleaned.slice(0, 2) || 'DR').toUpperCase();
+  }
+
   function statusBadge(status) {
     switch (status) {
-      case 'sent': return `<span class="badge badge-info">Mesaj Gönderildi</span>`;
-      case 'replied': return `<span class="badge badge-warn">Yanıtladı</span>`;
-      case 'registered': return `<span class="badge badge-success">Kayıtlı</span>`;
-      default: return `<span class="badge badge-neutral">Yeni</span>`;
+      case 'sent': return `<span class="badge badge-info"><span class="status-dot"></span>Mesaj Gönderildi</span>`;
+      case 'replied': return `<span class="badge badge-warn"><span class="status-dot"></span>Yanıtladı</span>`;
+      case 'registered': return `<span class="badge badge-success"><span class="status-dot"></span>Kayıtlı</span>`;
+      default: return `<span class="badge badge-neutral"><span class="status-dot"></span>Yeni</span>`;
     }
   }
 
@@ -61,6 +70,7 @@ window.AdminViews = (function () {
     return `
       <section class="welcome-banner">
         <div>
+          <div class="welcome-eyebrow">${esc(st.settings.doctorTitle)}</div>
           <h1>Hoş geldiniz, ${esc(st.settings.doctorName)}</h1>
           <p>Türkiye genelindeki hekimleri Google Maps üzerinden keşfedin, WhatsApp ile seminer afişlerinizi ulaştırın ve online / yüz yüze eğitim kayıtlarınızı tek merkezden yönetin.</p>
         </div>
@@ -413,10 +423,15 @@ window.AdminViews = (function () {
                   <tr>
                     <td><input type="checkbox" class="disc-row-check" data-id="${esc(doc.id)}" ${ui.selectedDiscoveryIds.has(doc.id) ? 'checked' : ''} /></td>
                     <td>
-                      <span class="doc-cell-name">${esc(doc.name)}</span>
-                      <span class="doc-cell-sub">
-                        <span>${esc(doc.clinic)}</span> · <strong>${esc(doc.specialty)}</strong> · ${esc(doc.city)} / ${esc(doc.district)}
-                      </span>
+                      <div class="doc-identity">
+                        <span class="doc-avatar">${esc(getInitials(doc.name))}</span>
+                        <div>
+                          <span class="doc-cell-name">${esc(doc.name)}</span>
+                          <span class="doc-cell-sub">
+                            <span>${esc(doc.clinic)}</span> · <strong>${esc(doc.specialty)}</strong> · ${esc(doc.city)} / ${esc(doc.district)}
+                          </span>
+                        </div>
+                      </div>
                     </td>
                     <td class="tabular-nums">
                       <div class="row-gap">
@@ -566,8 +581,13 @@ window.AdminViews = (function () {
               ` : list.map((doc) => `
                 <tr>
                   <td>
-                    <span class="doc-cell-name">${esc(doc.name)}</span>
-                    <span class="doc-cell-sub">${esc(doc.clinic)}</span>
+                    <div class="doc-identity">
+                      <span class="doc-avatar">${esc(getInitials(doc.name))}</span>
+                      <div>
+                        <span class="doc-cell-name">${esc(doc.name)}</span>
+                        <span class="doc-cell-sub">${esc(doc.clinic)}</span>
+                      </div>
+                    </div>
                   </td>
                   <td>
                     <span class="badge badge-neutral">${esc(doc.specialty)}</span>
