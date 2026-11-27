@@ -21,12 +21,8 @@ window.PublicViews = (function () {
     return `
       <header class="public-nav">
         <div class="public-nav-inner">
-          <a href="#/site" class="row-gap" style="text-decoration:none;">
-            <div class="brand-mark">HD</div>
-            <div>
-              <div class="brand-text-title">${esc(s.doctorName)}</div>
-              <div class="brand-text-sub">${esc(s.doctorTitle)}</div>
-            </div>
+          <a href="#/site" class="public-logo-link">
+            <img class="public-logo-img" src="assets/logo-hasan-dogan.png" alt="${esc(s.doctorName)}" />
           </a>
           <nav class="public-nav-links" aria-label="Ana menü">
             <a href="#/site" class="${activeTab === 'home' ? 'active' : ''}">Eğitimler</a>
@@ -53,7 +49,10 @@ window.PublicViews = (function () {
       <footer class="public-footer">
         <div class="public-container row-between">
           <div class="stack-sm">
-            <strong style="color:#fff; font-size:1rem;">${esc(s.doctorName)} — ${esc(s.doctorTitle)}</strong>
+            <div class="footer-logo-plate">
+              <img src="assets/logo-hasan-dogan.png" alt="${esc(s.doctorName)}" />
+            </div>
+            <strong style="color:#fff; font-size:0.95rem;">${esc(s.doctorName)} — ${esc(s.doctorTitle)}</strong>
             <span>Bilgi & Kayıt Hattı: ${esc(s.coordinatorName)} (${esc(s.coordinatorRole)}) · <a href="${esc(coordWa)}" target="_blank" rel="noopener">${esc(s.coordinatorPhone)}</a></span>
           </div>
           <div class="row-gap">
@@ -89,7 +88,13 @@ window.PublicViews = (function () {
         <section class="public-hero">
           <div class="public-container public-hero-grid">
             <div>
-              <div class="public-hero-kicker">${esc(s.doctorTitle)}</div>
+              <div class="hero-instructor-chip">
+                <img src="assets/hasan-dogan.jpg" alt="${esc(s.doctorName)}" />
+                <div>
+                  <div class="hero-instructor-name">${esc(s.doctorName)}</div>
+                  <div class="hero-instructor-role">${esc(s.doctorTitle)}</div>
+                </div>
+              </div>
               <h1>Hekimlere Özel Proloterapi &amp; Bütüncül Tıp Eğitimleri</h1>
               <p class="public-hero-lead">
                 ${esc(s.doctorName)} liderliğinde, Türkiye’nin 81 ilinden hekimlere yönelik uygulamalı yüz yüze Klasik Hackett Proloterapi atölyeleri ve Google Meet üzerinden canlı interaktif online vaka seminerleri.
@@ -422,9 +427,12 @@ window.PublicViews = (function () {
                 <div class="card">
                   <div class="card-body stack-sm">
                     <div class="row-between">
-                      <div>
-                        <h3 style="font-size:1rem;">Eğitmen: ${esc(s.doctorName)}</h3>
-                        <p class="text-muted">${esc(s.doctorTitle)}</p>
+                      <div class="row-gap" style="gap:14px;">
+                        <img class="doctor-portrait-card" src="assets/hasan-dogan.jpg" alt="${esc(s.doctorName)}" />
+                        <div>
+                          <h3 style="font-size:1.05rem;">Eğitmen: ${esc(s.doctorName)}</h3>
+                          <p class="text-muted">${esc(s.doctorTitle)}</p>
+                        </div>
                       </div>
                       <span class="badge badge-primary">Resmi Eğitim Portalı</span>
                     </div>
@@ -512,10 +520,13 @@ window.PublicViews = (function () {
         <section class="public-section" style="padding-top:28px;">
           <div class="public-container stack-md">
             <div class="welcome-banner">
-              <div>
-                <span class="badge badge-brass" style="margin-bottom:8px;">Doğrulanmış Katılımcı: ${esc(part.title)} ${esc(part.fullName)}</span>
-                <h1 style="font-size:1.45rem;">${esc(sem ? sem.title : 'Online Proloterapi Semineri')}</h1>
-                <p>Op. Dr. Hasan Doğan’ın Google Meet canlı yayınına tek tıkla katılabilir, eş zamanlı ekran paylaşımı ve sunum slaytlarını aşağıdan takip edebilirsiniz.</p>
+              <div class="welcome-profile">
+                <img class="doctor-portrait-ring" src="assets/hasan-dogan.jpg" alt="${esc(s.doctorName)}" />
+                <div>
+                  <span class="badge badge-brass" style="margin-bottom:8px;">Doğrulanmış Katılımcı: ${esc(part.title)} ${esc(part.fullName)}</span>
+                  <h1 style="font-size:1.75rem;">${esc(sem ? sem.title : 'Online Proloterapi Semineri')}</h1>
+                  <p>Op. Dr. Hasan Doğan’ın Google Meet canlı yayınına tek tıkla katılabilir, eş zamanlı ekran paylaşımı ve sunum slaytlarını aşağıdan takip edebilirsiniz.</p>
+                </div>
               </div>
               <div class="welcome-actions">
                 <a href="${esc(meetLink)}" target="_blank" rel="noopener" class="btn btn-on-dark btn-lg">${Icons.video} Google Meet Canlı Yayınına Katıl</a>

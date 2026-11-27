@@ -104,10 +104,11 @@
         <div class="sidebar-backdrop ${mobileSidebarOpen ? 'open' : ''}" data-action="close-mobile-nav"></div>
         <aside class="sidebar ${mobileSidebarOpen ? 'open' : ''}">
           <div class="sidebar-brand">
-            <div class="brand-mark">HD</div>
-            <div>
-              <div class="brand-text-title">Dr. Hasan Doğan</div>
-              <div class="brand-text-sub">Seminer Operasyon Merkezi</div>
+            <div class="sidebar-brand-stack">
+              <div class="sidebar-logo-plate">
+                <img src="assets/logo-hasan-dogan.png" alt="Op. Dr. Hasan Doğan — Ortopedi ve Travmatoloji Uzmanı" />
+              </div>
+              <div class="brand-text-sub" style="text-align:center;">Seminer Operasyon Merkezi</div>
             </div>
           </div>
 

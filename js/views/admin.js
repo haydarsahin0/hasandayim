@@ -69,10 +69,13 @@ window.AdminViews = (function () {
 
     return `
       <section class="welcome-banner">
-        <div>
-          <div class="welcome-eyebrow">${esc(st.settings.doctorTitle)}</div>
-          <h1>Hoş geldiniz, ${esc(st.settings.doctorName)}</h1>
-          <p>Türkiye genelindeki hekimleri Google Maps üzerinden keşfedin, WhatsApp ile seminer afişlerinizi ulaştırın ve online / yüz yüze eğitim kayıtlarınızı tek merkezden yönetin.</p>
+        <div class="welcome-profile">
+          <img class="doctor-portrait-ring" src="assets/hasan-dogan.jpg" alt="${esc(st.settings.doctorName)}" />
+          <div>
+            <div class="welcome-eyebrow">${esc(st.settings.doctorTitle)}</div>
+            <h1>Hoş geldiniz, ${esc(st.settings.doctorName)}</h1>
+            <p>Türkiye genelindeki hekimleri Google Maps üzerinden keşfedin, WhatsApp ile seminer afişlerinizi ulaştırın ve online / yüz yüze eğitim kayıtlarınızı tek merkezden yönetin.</p>
+          </div>
         </div>
         <div class="welcome-actions">
           <a href="#/kesif" class="btn btn-on-dark">${Icons.compass} Hekim Keşfine Başla</a>
@@ -729,7 +732,7 @@ window.AdminViews = (function () {
           <div class="wa-phone-frame">
             <div class="wa-phone-screen">
               <div class="wa-header">
-                <div class="wa-avatar">HD</div>
+                <img class="wa-avatar-img" src="assets/hasan-dogan.jpg" alt="${esc(st.settings.doctorName)}" />
                 <div>
                   <div class="wa-header-name">${esc(st.settings.doctorName)}</div>
                   <div class="wa-header-status">Önizleme · Alıcı: ${esc(previewDoc.name)}</div>

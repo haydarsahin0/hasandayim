@@ -102,7 +102,7 @@ window.AppData = (function () {
 
   const INITIAL_SETTINGS = {
     doctorName: 'Op. Dr. Hasan Doğan',
-    doctorTitle: 'Bilimsel Proloterapi Derneği Kurucu Başkanı',
+    doctorTitle: 'Ortopedi ve Travmatoloji Uzmanı · Bilimsel Proloterapi Derneği Kurucu Başkanı',
     coordinatorName: 'Seher Çakmak',
     coordinatorRole: 'Eğitim Koordinatörü',
     coordinatorPhone: '0 (530) 876 61 65',

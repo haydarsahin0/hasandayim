@@ -1857,3 +1857,142 @@ code { font-family: var(--font-mono); font-size: 0.88em; }
   .welcome-banner h1 { font-size: 1.85rem; }
   .mode-switch { display: none; }
 }
+
+/* ==========================================================================
+   Official Doctor Logo & Framed Portrait Styles
+   ========================================================================== */
+
+.sidebar-brand-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.sidebar-logo-plate {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(215, 180, 115, 0.32);
+}
+
+.sidebar-logo-plate img {
+  width: 100%;
+  max-height: 44px;
+  object-fit: contain;
+}
+
+.public-logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.public-logo-img {
+  height: 42px;
+  width: auto;
+  max-width: 215px;
+  object-fit: contain;
+}
+
+.footer-logo-plate {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: 4px;
+}
+
+.footer-logo-plate img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.welcome-profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.doctor-portrait-ring {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 2.5px solid rgba(215, 180, 115, 0.78);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  flex-shrink: 0;
+  background: #0D2E2B;
+}
+
+.doctor-portrait-card {
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 2px solid rgba(168, 124, 56, 0.38);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.hero-instructor-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 18px 10px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(215, 180, 115, 0.3);
+  backdrop-filter: blur(8px);
+  margin-bottom: 24px;
+}
+
+.hero-instructor-chip img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 2px solid var(--accent-brass-light);
+  flex-shrink: 0;
+}
+
+.hero-instructor-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.94rem;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.hero-instructor-role {
+  font-size: 0.77rem;
+  color: rgba(250, 248, 244, 0.76);
+  margin-top: 2px;
+}
+
+.wa-avatar-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .welcome-profile { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .public-logo-img { height: 34px; max-width: 170px; }
+}
+
