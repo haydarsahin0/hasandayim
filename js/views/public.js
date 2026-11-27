@@ -208,6 +208,88 @@ window.PublicViews = (function () {
           </div>
         </section>
 
+        <section id="ozgecmis" class="public-section">
+          <div class="public-container stack-md">
+            <div class="public-section-head">
+              <div>
+                <span class="badge badge-primary" style="margin-bottom:8px;">Akademik Özgeçmiş &amp; Eserler</span>
+                <h2>Op. Dr. Hasan Doğan Hakkında</h2>
+              </div>
+              <div class="row-gap">
+                <button class="btn btn-secondary btn-sm" data-action="open-publications-modal">${Icons.fileText} Tüm Bilimsel Yayınlar (${AppData.DOCTOR_PROFILE.publications.length})</button>
+                <a href="https://www.proloterapi.com.tr/op-dr-hasan-dogan/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Detaylı Özgeçmiş ${Icons.externalLink}</a>
+              </div>
+            </div>
+
+            <div class="bio-grid">
+              <div class="card">
+                <div class="card-body stack-md">
+                  <div class="row-gap" style="gap:16px;">
+                    <img class="doctor-portrait-card" style="width:84px; height:84px;" src="assets/hasan-dogan.jpg" alt="${esc(s.doctorName)}" />
+                    <div>
+                      <h3 style="font-size:1.25rem;">${esc(s.doctorName)}</h3>
+                      <p class="text-muted">${esc(s.doctorTitle)}</p>
+                    </div>
+                  </div>
+                  <p style="color:var(--ink-secondary); font-size:0.92rem; line-height:1.7;">${esc(AppData.DOCTOR_PROFILE.summary)}</p>
+
+                  <div class="bio-stats-grid">
+                    ${AppData.DOCTOR_PROFILE.stats.map((stItem) => `
+                      <div class="bio-stat-box">
+                        <strong>${esc(stItem.value)}</strong>
+                        <span>${esc(stItem.label)}</span>
+                      </div>
+                    `).join('')}
+                  </div>
+
+                  <div>
+                    <div class="selector-title" style="margin-bottom:8px;">Üyesi Olduğu Bilimsel Dernekler</div>
+                    <div class="row-gap">
+                      ${AppData.DOCTOR_PROFILE.associations.map((a) => `<span class="badge badge-neutral">${esc(a)}</span>`).join('')}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Eğitim &amp; Kariyer Kilometre Taşları</h3>
+                </div>
+                <div class="card-body">
+                  <div class="bio-timeline">
+                    ${AppData.DOCTOR_PROFILE.milestones.map((m) => `
+                      <div class="bio-timeline-item">
+                        <span class="bio-year">${esc(m.year)}</span>
+                        <div>
+                          <strong>${esc(m.title)}</strong>
+                          <p class="text-muted">${esc(m.desc)}</p>
+                        </div>
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 style="font-family:var(--font-serif); font-size:1.7rem; margin-bottom:16px;">Yayımlanan Türkçe Referans Kitapları</h3>
+              <div class="social-grid">
+                ${AppData.DOCTOR_PROFILE.books.map((bk) => `
+                  <article class="social-card">
+                    <div class="row-between">
+                      <span class="badge badge-brass">${esc(bk.badge)}</span>
+                      <span class="text-muted tabular-nums">${esc(bk.year)}</span>
+                    </div>
+                    <h4 style="font-size:1.05rem;">${esc(bk.title)}</h4>
+                    <p class="text-muted" style="line-height:1.55;">${esc(bk.desc)}</p>
+                    <div style="margin-top:auto; padding-top:8px; font-size:0.78rem; color:var(--primary); font-weight:600;">${esc(bk.publisher)}</div>
+                  </article>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section class="public-section" style="background:var(--bg-surface); border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle);">
           <div class="public-container">
             <div class="public-section-head">
@@ -466,12 +548,12 @@ window.PublicViews = (function () {
                       </div>
                       <span class="badge badge-primary">Resmi Eğitim Portalı</span>
                     </div>
-                    <p class="text-muted">Hekimimiz ve Bilimsel Proloterapi Derneği hakkında daha fazla bilgi, makale ve yayınlar için resmi kanallarımızı ziyaret edebilirsiniz:</p>
+                    <p class="text-muted" style="line-height:1.6;">Gazi Üniversitesi Tıp Fakültesi (1988) ve Ankara Numune Hastanesi Ortopedi &amp; Travmatoloji ihtisaslı (1997) Op. Dr. Hasan Doğan; Bilimsel Proloterapi Derneği (BPoD) Kurucu Başkanı, IGNH/BNR eğitmeni ve Türkiye’nin ilk Türkçe <em>Proloterapi</em> (2013) ile <em>Ortopedik Hastalıklarda Ozon Tedavi ve Nöralterapi</em> (2012) kitaplarının yazarıdır.</p>
                     <div class="row-gap">
+                      <button type="button" class="btn btn-primary btn-sm" data-action="open-publications-modal">${Icons.fileText} Bilimsel Yayınlar</button>
                       <a href="${esc(s.websitePrimary)}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">${Icons.globe} drhasandogan.com</a>
                       <a href="${esc(s.websiteSecondary)}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">${Icons.globe} proloterapi.com.tr</a>
                       <a href="${esc(s.instagramUrl)}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">${Icons.instagram} Instagram</a>
-                      <a href="${esc(s.facebookUrl)}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">${Icons.facebook} Facebook</a>
                     </div>
                   </div>
                 </div>

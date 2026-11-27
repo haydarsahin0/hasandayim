@@ -657,6 +657,67 @@ window.AppData = (function () {
     return collected;
   }
 
+  const DOCTOR_PROFILE = {
+    summary:
+      '1988 yılında Gazi Üniversitesi Tıp Fakültesi’nden mezun olan Op. Dr. Hasan Doğan, 1993–1997 yılları arasında Ankara Numune Hastanesi’nde Ortopedi ve Travmatoloji ihtisasını tamamladı. Klasik ortopedi bilgisini bütüncül tıp yaklaşımıyla birleştiren Doğan; 2012 yılında Bilimsel Proloterapi Derneği’ni (BPoD) kurarak Türkiye’de uluslararası standartlarda proloterapi eğitim müfredatını başlattı. Halen Denizli’deki özel kliniğinde lokomotor sistemin kronik hastalıkları, eklem sorunları ve bütüncül ağrı tedavileri üzerine çalışmakta ve hekimlere uygulamalı eğitimler vermektedir.',
+    stats: [
+      { value: '1988', label: 'Gazi Üniv. Tıp Mezunu' },
+      { value: '2012', label: 'BPoD Kurucu Başkanı' },
+      { value: '3 Kitap', label: 'İlk Türkçe Proloterapi & Ozon' },
+      { value: '14+ Yayın', label: 'TOTBİD, BARNAT & Uluslararası' }
+    ],
+    milestones: [
+      { year: '1982 – 1988', title: 'Gazi Üniversitesi Tıp Fakültesi', desc: 'Tıp Doktoru derecesi ile mezuniyet.' },
+      { year: '1993 – 1997', title: 'Ankara Numune Hastanesi', desc: 'Ortopedi ve Travmatoloji ihtisası — Operatör Doktor unvanı.' },
+      { year: '2004 – 2007', title: 'Ozon, Fitoterapi & Nöralterapi Eğitmenliği', desc: 'MODER Ozon Tedavisi, Ege Üniv. ARGEFAR Fitoterapi, IGNH (Almanya Uluslararası Nöralterapi Cemiyeti) ve BNR eğitmenliği & 2. başkanlığı.' },
+      { year: 'Nisan 2012', title: 'Bilimsel Proloterapi Derneği (BPoD) Kurucu Başkanı', desc: 'Türkiye’de uluslararası standartlarda proloterapi eğitim müfredatını oluşturup hekim eğitimlerini başlattı; 1. Ulusal Proloterapi Sempozyumu Başkanlığı (2014, Pamukkale).' }
+    ],
+    books: [
+      {
+        year: '2013',
+        badge: 'İlk Türkçe Proloterapi Kitabı',
+        title: 'Proloterapi',
+        publisher: 'İntertıp Yayınları',
+        desc: 'Türkiye’de Proloterapi alanında Türkçe yayımlanan ilk temel başvuru ve eğitim kitabı.'
+      },
+      {
+        year: '2012',
+        badge: 'İlk Türkçe Ozon Kitabı',
+        title: 'Ortopedik Hastalıklarda Ozon Tedavi ve Nöralterapi',
+        publisher: 'İntertıp Yayınları',
+        desc: 'Ortopedik hastalıklarda medikal ozon tedavisi ve nöralterapi protokollerini içeren öncü eser.'
+      },
+      {
+        year: '2014',
+        badge: 'Ders Notları',
+        title: 'Homeopati Öğreniyorum',
+        publisher: 'İntertıp Yayınları (F. Bahçıvan ile)',
+        desc: 'Hekimler için bütüncül tıp perspektifinden Homeopati ders notları ve klinik değerlendirme.'
+      }
+    ],
+    associations: [
+      'Bilimsel Proloterapi Derneği (Kurucu Başkan)',
+      'İtalyan Proloterapi Cemiyeti',
+      'Bilimsel Nöralterapi Derneği',
+      'Medikal Ozon Derneği (MODER)',
+      'Klasik Homeopati Derneği',
+      'Sağlıklı Yaşam Derneği'
+    ],
+    publications: [
+      'Erken HA, Genç O, Erken G, Ayada C, Gündoğdu G, Doğan H. Ozone Partially Prevents Diabetic Neuropathy in Rats. Exp. Clin. Endocrinol. Diabetes, Stuttgart, 2014.',
+      'Genç O, Erken G, Ayada C, Erken AH, Gündoğdu Demirkaya G, Doğan H. The protective effects of Medical Ozone Treatment on Learning-Memory Functions in Diabetic Rats. Acta Physiologica, 2011; 203(Suppl. 686):PC103.',
+      'Doğan H. Ortopedi ve Ağrıya Yeni Yaklaşım. TOTBİD Dergisi, Cilt 8, Sayfa 53–56, 2009.',
+      'Doğan H. Kronik Dejeneratif Eklem Ağrılarında Lokal Anestetiklerin Uzun Etkisi. TOTBİD Dergisi, Cilt 6, Sayfa 132–134, 2007.',
+      'Doğan H. Osteomiyelit. BARNAT Dergisi, Sayı 14, Sayfa 32–35, İstanbul, 2011.',
+      'Doğan H. Ayak Bileği Yumuşak Doku Travmalarında Nöralterapinin İyileşme Sürecine Etkisi. BARNAT, Sayı 12, 2011.',
+      'Doğan H. Ozon Tedavisi. BARNAT Dergisi, Sayı 11, Sayfa 36–45, İstanbul, 2010.',
+      'Doğan H. Nöralterapist Gözüyle Bel Ağrılarında Tanı ve Tedavi. BARNAT, Sayı 9, 2010.',
+      'Doğan H, Acarkan T. Miyofasial Tetik Noktaları. BARNAT, Sayı 7, 2009.',
+      'Doğan H. Alt Ekstremite Dolaşım Bozuklukları. BARNAT, Sayı 8, 2009.',
+      'Doğan H. Travma Vakalarında Nöralterapi ile Alınan Sonuçlar. BARNAT, Sayı 4, 2008.'
+    ]
+  };
+
   return {
     PROVINCES_81,
     SPECIALTIES,
@@ -668,6 +729,7 @@ window.AppData = (function () {
     INITIAL_PARTICIPANTS,
     INITIAL_CAMPAIGNS,
     INITIAL_ACTIVITIES,
+    DOCTOR_PROFILE,
     discoverDoctorsBuiltIn,
     discoverDoctorsGooglePlacesAPI
   };

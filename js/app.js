@@ -596,6 +596,16 @@
         break;
 
       // Public Registration & Classroom Actions
+      case 'open-publications-modal':
+        openModal(
+          'Op. Dr. Hasan Doğan — Bilimsel Yayınlar (TOTBİD, BARNAT & Uluslararası)',
+          `<ol style="padding-left:18px; margin:0; display:flex; flex-direction:column; gap:10px; font-size:0.85rem; color:var(--ink-secondary); line-height:1.55;">
+            ${AppData.DOCTOR_PROFILE.publications.map((pub) => `<li>${esc(pub)}</li>`).join('')}
+          </ol>`,
+          `<a href="https://www.proloterapi.com.tr/op-dr-hasan-dogan/" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">Kaynak Sayfa ${Icons.externalLink}</a>
+           <button class="btn btn-primary btn-sm" data-action="close-modal">Kapat</button>`
+        );
+        break;
       case 'open-kvkk-modal':
         e.preventDefault();
         openModal(
