@@ -345,6 +345,17 @@ window.AdminViews = (function () {
               </button>
             </div>
           </div>
+
+          ${ui.discoveryRunning ? `
+            <div class="radar-scan-banner">
+              <div class="radar-pulse"><span></span></div>
+              <div style="flex:1; min-width:0;">
+                <strong style="display:block; font-size:0.9rem; color:var(--primary);">Canlı Google Maps Keşif Motoru Çalışıyor</strong>
+                <span id="radar-scan-status" class="text-muted">${esc(st.discoverySelection.cities[0] || 'Türkiye')} · ${esc(st.discoverySelection.specialties[0] || 'Ortopedi')} klinikleri taranıyor...</span>
+                <div class="radar-shimmer-track"><div class="radar-shimmer-bar"></div></div>
+              </div>
+            </div>
+          ` : ''}
         </div>
       </section>
 

@@ -2128,6 +2128,341 @@ code { font-family: var(--font-mono); font-size: 0.88em; }
   .public-logo-img { height: 36px; max-width: 185px; }
 }
 
+/* ==========================================================================
+   Motion & Micro-Interaction Choreography System
+   ========================================================================== */
+
+/* Top Scroll Progress Hairline */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #004E82 0%, #4FB3E8 55%, #8F1D5B 100%);
+  transform-origin: left center;
+  transform: scaleX(0);
+  z-index: 200;
+  pointer-events: none;
+  transition: transform 80ms linear;
+}
+
+/* Living Ambient Light Orbs inside Hero, Welcome Banner & Slide Stage */
+.welcome-banner,
+.public-hero,
+.slide-stage {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.welcome-banner::before,
+.public-hero::before,
+.slide-stage::before {
+  content: '';
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  top: -170px;
+  right: -90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79, 179, 232, 0.34) 0%, rgba(79, 179, 232, 0) 68%);
+  pointer-events: none;
+  z-index: -1;
+  animation: ambientOrbFloat 13s ease-in-out infinite alternate;
+}
+
+.welcome-banner::after,
+.public-hero::after {
+  content: '';
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  bottom: -180px;
+  left: -60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 36, 108, 0.28) 0%, rgba(168, 36, 108, 0) 70%);
+  pointer-events: none;
+  z-index: -1;
+  animation: ambientOrbFloat2 16s ease-in-out infinite alternate;
+}
+
+@keyframes ambientOrbFloat {
+  0%   { transform: translate(0, 0) scale(1); opacity: 0.72; }
+  50%  { transform: translate(-48px, 32px) scale(1.12); opacity: 0.96; }
+  100% { transform: translate(-20px, -18px) scale(0.95); opacity: 0.78; }
+}
+
+@keyframes ambientOrbFloat2 {
+  0%   { transform: translate(0, 0) scale(1); opacity: 0.65; }
+  50%  { transform: translate(55px, -28px) scale(1.15); opacity: 0.92; }
+  100% { transform: translate(22px, 16px) scale(0.96); opacity: 0.72; }
+}
+
+/* Specular Light Sweep Across Primary & CTA Buttons */
+.btn-primary,
+.btn-whatsapp,
+.btn-on-dark {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after,
+.btn-whatsapp::after,
+.btn-on-dark::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 48%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: skewX(-24deg);
+  transition: left 560ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.btn-primary:hover::after,
+.btn-whatsapp:hover::after,
+.btn-on-dark:hover::after {
+  left: 135%;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.975) translateY(0);
+}
+
+/* Cursor-Tracking Glass Spotlight on Tactile Cards */
+.kpi-card,
+.seminar-card,
+.social-card,
+.public-hero-card {
+  position: relative;
+}
+
+.kpi-card::after,
+.social-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgba(79, 179, 232, 0.13), transparent 65%);
+  opacity: 0;
+  transition: opacity 280ms ease;
+  pointer-events: none;
+}
+
+.kpi-card:hover::after,
+.social-card:hover::after {
+  opacity: 1;
+}
+
+/* Gentle Floating Levitation on Featured Public Hero Card */
+.public-hero-card {
+  animation: heroCardFloat 6.5s ease-in-out infinite;
+}
+
+.public-hero-card:hover {
+  animation-play-state: paused;
+  transform: translateY(-6px);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes heroCardFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+
+/* Breathing Portrait Halo */
+.doctor-portrait-ring,
+.hero-instructor-chip img {
+  animation: portraitHalo 4.8s ease-in-out infinite;
+}
+
+@keyframes portraitHalo {
+  0%, 100% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28), 0 0 0 0 rgba(143, 210, 246, 0.42); }
+  50%      { box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32), 0 0 0 7px rgba(143, 210, 246, 0); }
+}
+
+/* Springy Micro-Physics for Pills & Nav Items */
+.pill-btn {
+  transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1), background 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 180ms ease;
+}
+
+.pill-btn:active {
+  transform: scale(0.92);
+}
+
+.pill-btn.selected {
+  animation: pillPop 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pillPop {
+  0%   { transform: scale(0.9); }
+  65%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.nav-item {
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.nav-item:hover {
+  transform: translateX(3px);
+}
+
+.nav-item.active {
+  transform: translateX(0);
+}
+
+.kpi-card:hover .kpi-icon {
+  transform: scale(1.1) rotate(-4deg);
+  transition: transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.kpi-icon {
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Staggered Route Entrance Animation */
+.m-stagger-in {
+  opacity: 0;
+  animation: staggerRise 440ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes staggerRise {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Scroll-Triggered Reveals on Public Portal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 560ms cubic-bezier(0.22, 1, 0.36, 1), transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* WhatsApp Message Pop-In & Online Slide Cross-Glide */
+.wa-pop {
+  animation: waPopIn 360ms cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+@keyframes waPopIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.slide-glide {
+  animation: slideGlide 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes slideGlide {
+  from { opacity: 0.45; transform: translateX(18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Live Google Maps Radar Scan Panel */
+.radar-scan-banner {
+  margin-top: 16px;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(90deg, #E8F4FC 0%, #F4F8FC 100%);
+  border: 1px solid rgba(0, 78, 130, 0.22);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  animation: staggerRise 260ms ease both;
+}
+
+.radar-pulse {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0, 78, 130, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.radar-pulse span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--primary);
+  display: block;
+}
+
+.radar-pulse::before,
+.radar-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  animation: radarRing 1.5s cubic-bezier(0.2, 0.7, 0.3, 1) infinite;
+}
+
+.radar-pulse::after {
+  animation-delay: 0.65s;
+}
+
+@keyframes radarRing {
+  0%   { transform: scale(0.45); opacity: 0.9; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+
+.radar-shimmer-track {
+  margin-top: 9px;
+  height: 6px;
+  width: 100%;
+  background: rgba(0, 78, 130, 0.12);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+}
+
+.radar-shimmer-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 42%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, transparent, #004E82, #4FB3E8, transparent);
+  animation: radarSweep 1.15s ease-in-out infinite;
+}
+
+@keyframes radarSweep {
+  0%   { left: -45%; }
+  100% { left: 105%; }
+}
+
+/* Accessibility: Respect OS Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .scroll-reveal, .m-stagger-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+
 
 
 

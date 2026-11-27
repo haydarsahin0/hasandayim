@@ -170,8 +170,14 @@
     }
   }
 
+  let lastRouteKey = '';
+
   function render() {
     const { page, param } = parseRoute();
+    const routeKey = `${page}/${param}`;
+    const isRouteChange = routeKey !== lastRouteKey;
+    lastRouteKey = routeKey;
+
     if (page === 'site') {
       document.title = 'Op. Dr. Hasan Doğan — Proloterapi & Bütüncül Tıp Eğitim Portalı';
       appEl.innerHTML = PublicViews.renderPublicHome();
@@ -184,6 +190,13 @@
     } else {
       document.title = 'Op. Dr. Hasan Doğan — Seminer Operasyon Merkezi';
       renderAdminShell(page);
+    }
+
+    if (isRouteChange) {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+    if (window.Motion) {
+      Motion.enhance({ isRouteChange });
     }
   }
 
@@ -203,17 +216,31 @@
     AdminViews.ui.discoveryRunning = true;
     render();
 
+    // Live animated radar ticker cycling through selected cities & specialties
+    let tickerIdx = 0;
+    const tickerEl = () => document.getElementById('radar-scan-status');
+    const tickerInterval = setInterval(() => {
+      const el = tickerEl();
+      if (!el) return;
+      const c = cities[tickerIdx % cities.length];
+      const sp = specs[tickerIdx % specs.length];
+      el.textContent = `${c} · ${sp} klinikleri Google Maps üzerinde taranıyor...`;
+      tickerIdx++;
+    }, 240);
+
     try {
       const apiKey = (st.settings.googleMapsApiKey || '').trim();
       let found = [];
       if (apiKey) {
         found = await AppData.discoverDoctorsGooglePlacesAPI(apiKey, cities, specs, kw);
       } else {
-        await new Promise((r) => setTimeout(r, 650));
+        await new Promise((r) => setTimeout(r, 1350));
         found = AppData.discoverDoctorsBuiltIn(cities, specs, kw);
       }
+      clearInterval(tickerInterval);
       const addedCount = Store.mergeDiscoveredDoctors(found);
       AdminViews.ui.discoveryRunning = false;
+      lastRouteKey = ''; // Trigger crisp cascade-in for newly discovered rows
       render();
       if (addedCount > 0) {
         showToast(`Tarama tamamlandı! ${addedCount} yeni hekim / klinik listeye eklendi.`, 'success');
@@ -221,6 +248,7 @@
         showToast(`Seçili şehir ve branşlardaki ${found.length} hekim zaten listenizde mevcut.`, 'info');
       }
     } catch (err) {
+      clearInterval(tickerInterval);
       AdminViews.ui.discoveryRunning = false;
       render();
       showToast(err.message || 'Tarama sırasında bir hata oluştu.', 'warn');
